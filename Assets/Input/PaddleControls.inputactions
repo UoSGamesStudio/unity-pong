@@ -2,7 +2,7 @@
     "name": "PaddleControls",
     "maps": [
         {
-            "name": "Player1",
+            "name": "KeyboardLeft",
             "id": "de335810-88c6-4439-87ab-4ea90158f76d",
             "actions": [
                 {
@@ -37,96 +37,6 @@
                 {
                     "name": "up",
                     "id": "8394cebf-703a-40e1-bfb0-155096a502ce",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "f53889df-060e-4193-935b-2fc7d920bb22",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "0c268e95-5e68-4104-a3ad-81fff959a979",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "8d351d0a-a595-4310-b7d6-be386d781207",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "7ed6b4e1-33f9-4aaa-9d19-fe66d5b5975b",
-                    "path": "<Keyboard>/v",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Player2",
-            "id": "fe682db7-1f20-4a7d-be27-4fd4238d2c3b",
-            "actions": [
-                {
-                    "name": "Move",
-                    "type": "Value",
-                    "id": "d218da00-b559-4152-8128-2d8785452ccf",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "955fd1f0-87d7-4e07-9742-192d2fc0be45",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "2D Vector",
-                    "id": "6caeee8e-691a-4115-9402-b7639064145c",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "47d404eb-e447-4df6-a24d-70bd40808f21",
                     "path": "<Keyboard>/o",
                     "interactions": "",
                     "processors": "",
@@ -137,18 +47,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "5ae5d7e6-bd1b-4b0a-9174-f5efc4986650",
-                    "path": "<Keyboard>/k",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "e25d182e-641a-411b-884a-23d52eb8c66b",
+                    "id": "f53889df-060e-4193-935b-2fc7d920bb22",
                     "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
@@ -158,8 +57,19 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "left",
+                    "id": "0c268e95-5e68-4104-a3ad-81fff959a979",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "right",
-                    "id": "983a6144-8f38-41d7-acba-9555190ee4c9",
+                    "id": "8d351d0a-a595-4310-b7d6-be386d781207",
                     "path": "<Keyboard>/semicolon",
                     "interactions": "",
                     "processors": "",
@@ -170,7 +80,7 @@
                 },
                 {
                     "name": "",
-                    "id": "05372a3f-b617-4da2-9b8d-84d3fbc4dd01",
+                    "id": "7ed6b4e1-33f9-4aaa-9d19-fe66d5b5975b",
                     "path": "<Keyboard>/n",
                     "interactions": "",
                     "processors": "",
@@ -184,8 +94,19 @@
     ],
     "controlSchemes": [
         {
-            "name": "Keyboard",
-            "bindingGroup": "Keyboard",
+            "name": "KeyboardLeft",
+            "bindingGroup": "KeyboardLeft",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "KeyboardRight",
+            "bindingGroup": "KeyboardRight",
             "devices": [
                 {
                     "devicePath": "<Keyboard>",

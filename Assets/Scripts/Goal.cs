@@ -1,13 +1,25 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ShefGDS
 {
     [AddComponentMenu("Pong/Goal")]
     public class Goal : MonoBehaviour
     {
-        [SerializeField] Player owningPlayer;
+        [SerializeField] PlayerData owningPlayerData;
             
         [SerializeField] PlayerEvent onScore;
+
+
+        Action<PlayerData> _onScoreAction;
+        
+        public event Action<PlayerData> OnScoreEvent
+        {
+            add => _onScoreAction += value;
+            remove => _onScoreAction -= value;
+        }
+        
 
         void Reset()
         {
@@ -20,7 +32,15 @@ namespace ShefGDS
             if (!ball) return;
             
             // Goal
-            onScore?.Invoke(owningPlayer);
+            InvokeScoreEvent();
         }
+
+        void InvokeScoreEvent()
+        {
+            _onScoreAction?.Invoke(owningPlayerData);
+            onScore.Invoke(owningPlayerData);
+        }
+
+        public void SetPlayerData(PlayerData playerData) => owningPlayerData ??= playerData;
     }
 }

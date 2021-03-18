@@ -12,6 +12,8 @@ namespace ShefGDS
 	    
 	    Rigidbody2D _rigidbody;
 
+	    public float Speed => _rigidbody.velocity.magnitude;
+
 	    void Awake()
 	    {
 		    _rigidbody = GetComponent<Rigidbody2D>();
@@ -23,5 +25,9 @@ namespace ShefGDS
 		    var vel = _rigidbody.velocity;
 		    _rigidbody.velocity = Vector2.MoveTowards(vel, vel.normalized * maxSpeed, acceleration);
 	    }
+	    
+	    public void SetPosition(Vector2 position) => _rigidbody.position = position;
+
+	    public void SetVelocity(Vector2 velocity) => _rigidbody.velocity = velocity;
     }
 }

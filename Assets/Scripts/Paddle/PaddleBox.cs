@@ -15,14 +15,14 @@ namespace ShefGDS.Paddle
 		void Start()
 		{
 			OnValidate();
-			Debug.Log(_boxMin + " " + _boxMax);
 		}
 
 		void OnValidate()
 		{
 			Vector2 position = transform.position;
-			_boxMin = position - boxDimensions;
-			_boxMax = position + boxDimensions;
+			var dimensions = boxDimensions * 0.5f;
+			_boxMin = position - dimensions;
+			_boxMax = position + dimensions;
 		}
 
 		public void RestrictPosition(ref Vector2 attemptedNewPos)
@@ -31,6 +31,12 @@ namespace ShefGDS.Paddle
 			attemptedNewPos.x = Mathf.Clamp(attemptedNewPos.x, _boxMin.x, _boxMax.x);
 			attemptedNewPos.y = Mathf.Clamp(attemptedNewPos.y, _boxMin.y, _boxMax.y);
 			// Debug.Log(attemptedNewPos);
+		}
+
+		void OnDrawGizmos()
+		{
+			Gizmos.color = new Color(0.3f, 0, 1, 0.5f);
+			Gizmos.DrawWireCube(transform.position, boxDimensions);
 		}
 	}
 }

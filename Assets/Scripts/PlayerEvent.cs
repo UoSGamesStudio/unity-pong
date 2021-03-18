@@ -3,6 +3,6 @@
 namespace ShefGDS
 {
 	[Serializable]
-	public class PlayerEvent : UnityEngine.Events.UnityEvent<Player>
+	public class PlayerEvent : UnityEngine.Events.UnityEvent<PlayerData>
 	{ }
 }

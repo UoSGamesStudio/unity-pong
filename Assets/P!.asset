@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e68a3b73ffb4fc19bcf6e95af65620b, type: 3}
   m_Name: P!
   m_EditorClassIdentifier: 
+  points: 9
+  controlScheme: {fileID: 11400000, guid: 5fcb8d4771e906f41b0393302f5da7b3, type: 2}
