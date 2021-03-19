@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace ShefGDS
 {
@@ -7,7 +8,9 @@ namespace ShefGDS
 	{
 		[SerializeField] Ball ball;
 
-		[SerializeField] Transform neutralPosition;
+		[SerializeField] Transform ballNeutralPosition;
+
+		[SerializeField, Min(0)] float deferredStartTimeout = 2;
 
 		Player[] _players;
 
@@ -19,10 +22,17 @@ namespace ShefGDS
 				return;
 			}
 
+			var neutralPos = ballNeutralPosition.position;
+			ball.SetPosition(neutralPos);
 			ball.SetVelocity(Vector2.zero);
 
 			foreach (var goal in FindObjectsOfType<Goal>())
 				goal.OnScoreEvent += OnGoalScored;
+		}
+
+		public void DeferredStartGame()
+		{
+			StartCoroutine(DeferredStart());
 		}
 
 		public void StartGame()
@@ -31,7 +41,7 @@ namespace ShefGDS
 			var index = (int)(Random.value * _players.Length);
 			var startPlayer = _players[index];
 
-			var neutralPos = neutralPosition.position;
+			var neutralPos = ballNeutralPosition.position;
 			ball.SetPosition(neutralPos);
 			ball.SetVelocity(startPlayer.Goal.transform.position - neutralPos);
 		}
@@ -39,6 +49,12 @@ namespace ShefGDS
 		void OnGoalScored(PlayerData playerData)
 		{
 			playerData.points++;	
+		}
+
+		IEnumerator DeferredStart()
+		{
+			yield return new WaitForSeconds(deferredStartTimeout);
+			StartGame();
 		}
 	}
 }
