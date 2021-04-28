@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ShefGDS.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,9 @@ namespace ShefGDS.Paddle
 	public class PaddleController : MonoBehaviour
 	{
 		[SerializeField] PlayerData owningPlayerData;
+
+		[SerializeField] InputActionAsset inputAsset;
+		[SerializeField] string actionMap = "KBPlayer1";
 
 		[NonSerialized] public Vector2 BallLaunchDirection = Vector2.left;
 		
@@ -37,6 +41,16 @@ namespace ShefGDS.Paddle
 		{
 			_moveVector = context.ReadValue<Vector2>();
 			_onMove?.Invoke(_moveVector);
+			Debug.Log("V");
+		}
+
+		void Start()
+		{
+			var map = inputAsset.FindActionMap(actionMap);
+			var move = map.FindAction(InputActionNames.MoveAction);
+			move.started += OnMove;
+			move.performed += OnMove;
+			move.canceled += OnMove;
 		}
 
 		void Update()
@@ -51,7 +65,7 @@ namespace ShefGDS.Paddle
 			if (!ball)
 				return;
 			
-			ball.SetVelocity(BallLaunchDirection * ball.Speed);
+			// ball.SetVelocity(BallLaunchDirection * ball.Speed);
 		}
 	}
 }

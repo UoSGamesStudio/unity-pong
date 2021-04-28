@@ -15,6 +15,7 @@ namespace ShefGDS
 		[SerializeField] PaddleBox paddleBox;
 		
 		[SerializeField] GameObject paddleControllerPrefab;
+		[SerializeField] PaddleController paddleController;
 
 		public Goal Goal => goal;
 		
@@ -26,11 +27,11 @@ namespace ShefGDS
 
 			goal ??= GetComponentInChildren<Goal>();
 
-			PaddleController = PlayerInput
-				.Instantiate(paddleControllerPrefab, controlScheme: playerData.controlScheme, pairWithDevice: Keyboard.current)
-				.GetComponent<PaddleController>();
+			// PaddleController = PlayerInput
+			// 	.Instantiate(paddleControllerPrefab, controlScheme: playerData.controlScheme, pairWithDevice: Keyboard.current)
+			// 	.GetComponent<PaddleController>();
 			
-			PaddleController.transform.SetParent(transform);
+			// PaddleController.transform.SetParent(transform);
 			
 			paddleBox ??= GetComponentInChildren<PaddleBox>();
 		}
@@ -38,8 +39,8 @@ namespace ShefGDS
 		void Start()
 		{
 			goal.SetPlayerData(playerData);
-			PaddleController.SetPlayerData(playerData);
-			PaddleController.PaddleBox = paddleBox;
+			paddleController.SetPlayerData(playerData);
+			paddleController.PaddleBox = paddleBox;
 		}
 	}
 }
